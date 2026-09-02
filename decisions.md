@@ -3,6 +3,10 @@
 > Why things are the way they are. A recorded decision is settled unless the
 > user reopens it. Newest first.
 
+## 2026-09-02 — Deploy on Drydock as a static site at water.dested.com
+**Why:** no backend, so the static profile (bun file server + SPA fallback, size xs) on the shared box costs nothing extra; standard rails (Route53 in the shared dested.com zone, Caddy auto-TLS, OIDC CI).
+**Rejected:** Vercel/GitHub Pages (another host to manage), a dedicated domain (subdomain is the fleet convention).
+
 ## 2026-09-02 — Plain Vite + React, no sal-starter / server
 **Why:** pure client-side simulation; tRPC/Prisma would be dead weight. Confirmed by the user.
 **Rejected:** sal-starter (unused server), Next.js (no SSR value for a WebGPU canvas).

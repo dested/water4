@@ -33,7 +33,7 @@ control panel.
 | Simulation | WebGPU compute (WGSL) | FLIP/PIC on a MAC grid, atomics P2G |
 | Rendering | WebGPU render pipelines | additive HDR splat → bloom → composite |
 | Dev URL | portless (`portless.json` name `water4`) | HMR is pinned to `wss://water4.localhost:443` in `vite.config.ts` |
-| Deploy | none yet | static build works (`dist/`) |
+| Deploy | Drydock (`G:/code/drydock` portal, project `water`) → https://water.dested.com | static container; Drydock owns `Dockerfile`, `drydock.yaml`, `.github/workflows/drydock.yml` (never hand-edit) |
 
 ## Directory structure
 
@@ -54,6 +54,7 @@ src/
   ui/
     useFluidSim.ts         React hook: creates the sim once, pushes maze/settings, polls stats, detects "solved"
     Panel.tsx              Control panel (sliders/toggles/stats)
+Dockerfile drydock.yaml .github/workflows/drydock.yml   Drydock-managed deploy files (overwritten on re-wire)
 cliffnotes.md ui.md decisions.md updates.md verify.md   Doc kit
 plans/                     Dated working docs (create on first need)
 ```
@@ -152,5 +153,6 @@ sprite falloff, `fsComposite` walls/trail/tonemap. Brightness defaults in `DEFAU
 ## Status
 
 - **[Done]** maze gen + SDF, WebGPU FLIP solver, additive/bloom renderer, control panel, pointer pouring, solved detection, GPU timing.
-- **[Not built]** WebGL2 fallback, screen-space fluid surface, deployment.
+- **[Done]** deployed via Drydock as project `water` → https://water.dested.com (push to main = deploy).
+- **[Not built]** WebGL2 fallback, screen-space fluid surface.
 - **Next:** tune defaults on a real full-screen window; consider APIC transfer to remove FLIP striations.
